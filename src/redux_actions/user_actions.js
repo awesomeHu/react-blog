@@ -1,0 +1,43 @@
+
+
+export const USER_ACTIONS = {
+    GET_ALL_USERS: "GET_ALL_USERS",
+    SIGNUP: "SIGNUP",
+    LOGIN: "LOGIN",
+    LOGOUT: 'LOGOUT',
+    SIGNUP_REQUEST: 'USERS_SIGNUP_REQUEST',
+    SIGNUP_SUCCESS: 'USERS_SIGNUP_SUCCESS',
+    SIGNUP_FAILURE: 'USERS_SIGNUP_FAILURE',
+
+    LOGIN_REQUEST: 'USERS_LOGIN_REQUEST',
+    LOGIN_SUCCESS: 'USERS_LOGIN_SUCCESS',
+    LOGIN_FAILURE: 'USERS_LOGIN_FAILURE',
+
+    LOGOUT: 'USERS_LOGOUT',
+
+    GETALL_REQUEST: 'USERS_GETALL_REQUEST',
+    GETALL_SUCCESS: 'USERS_GETALL_SUCCESS',
+    GETALL_FAILURE: 'USERS_GETALL_FAILURE',
+
+    DELETE_REQUEST: 'USERS_DELETE_REQUEST',
+    DELETE_SUCCESS: 'USERS_DELETE_SUCCESS',
+    DELETE_FAILURE: 'USERS_DELETE_FAILURE'    
+};
+
+export const get_all_users = () => ({
+    type: USER_ACTIONS.GET_ALL_USERS
+})
+
+export const signup = (new_user) => ({
+    type: USER_ACTIONS.SIGNUP_REQUEST,
+    payload: new_user
+})
+
+export const login = (userInfo) => ({
+    type: USER_ACTIONS.LOGIN_REQUEST,
+    payload: userInfo
+})
+
+export const logout = () => ({
+    type: USER_ACTIONS.LOGOUT
+})

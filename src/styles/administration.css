@@ -1,0 +1,62 @@
+.admin_left_side_bar{
+    height: 1200px;
+    width: 200px;
+    background-color: #2e3330;
+    color:white;
+}
+
+/* .admin_left_side_bar_button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+} */
+
+.admin_left_side_bar_button div{
+    height:75px;
+    width:200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    cursor:pointer;
+}
+.admin_left_side_bar_button div p{
+    margin-left: 20px
+}
+
+.admin_left_side_bar_button div p span{
+    margin-left: 10px;
+    margin-top:10px
+}
+
+.admin_left_side_bar_button div:hover{
+    background-color: #2f86e9
+}
+
+
+
+.blogItem {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height:75px;
+    border-bottom:2px solid grey
+}
+
+.categorySelection{
+    display: flex;
+    border-radius: 5px;
+    width: 120px;
+    height: 30px;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9e8e8;
+    cursor: pointer;
+    
+    margin-right:5px
+}
+.categorySelection:hover {
+    background-color:#ee7c86;
+}

@@ -1,0 +1,103 @@
+.popup-wrapper {
+  position: fixed;
+  top:0;
+  bottom:0;
+  left:0;
+  right:0;
+  background-color: rgba(41, 41, 41, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999
+}
+
+
+.popup-wrapper-appear{
+  background-color: rgba(41, 41, 41, 0);
+}
+
+.popup-wrapper-appear.popup-wrapper-appear-active {
+  background-color: rgba(41, 41, 41, 0.7);
+  transition: all 0.5s linear
+}
+
+.popup-wrapper-enter {
+  background-color: rgba(41, 41, 41, 0);
+}
+
+  .popup-wrapper-enter.popup-wrapper-active {
+    background-color: rgba(41, 41, 41, 0.7);
+    transition: all 0.3s linear;
+  }
+ 
+  .popup-wrapper-leave {
+    background-color: rgba(41, 41, 41, 0.7);
+  }
+  
+  .popup-wrapper-leave.popup-wrapper-leave-active {
+    background-color: rgba(41, 41, 41, 0);
+    transition: all 0.1s linear;
+  }
+
+
+  .popup-content-appear {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  
+  .popup-content-appear.popup-content-appear-active {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: all 0.2s linear;
+  }
+  
+  .popup-content-leave {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  
+  .popup-content-leave.popup-content-leave-active {
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.1s linear;
+  }
+
+
+  .notification-wrapper {
+    position: fixed;
+    top: 130px;
+    left:45%;
+    z-index: 999;
+    display: flex;
+    width: 260px;
+    height: 55px;
+    border-radius: 6px;
+    opacity: 0.8;
+    overflow:hidden;
+    background-color: rgba(41, 41, 41, 0.7);
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .notification-wrapper:hover {
+    cursor: pointer;
+  }
+  
+  .notification-wrapper-appear {
+    opacity: 0;
+  }
+  
+  .notification-wrapper-appear.notification-wrapper-appear-active {
+    opacity: 1;
+    transition: all 0.3s linear
+  }
+  
+  .notification-wrapper-leave {
+    opacity: 1;
+  }
+  
+  .notification-wrapper-leave.notification-wrapper-leave-active {
+    opacity: 0;
+    transition: all 0.3s linear
+  }
+  
