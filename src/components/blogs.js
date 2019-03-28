@@ -167,9 +167,11 @@ export class SingleBlog extends PureComponent {
             <div style={{
                 lineHeight: 1.6,
                 fontSize: 15,
-                color: '#544031'
+                color: '#544031',
+                width:700,
+                overflow:'hidden'
             }}>
-                {blog_content.split(' ').slice(0, 60)}
+                {blog_content.split(' ').slice(0, 40).join(' ')}
             </div>
 
             <div style={Object.assign({}, styles.buttonStyle, { backgroundColor: this.state.hovered && this.hoverElements.button ? '#808080' : '#DC143C' })}
