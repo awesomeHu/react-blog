@@ -22,7 +22,7 @@ class Archives extends PureComponent {
                         {blog_list.map((blog, index) => {
                             return <li style={{ alignSelf: 'flex-start' }} key={index}>
                                 <Link to={`/blogDetail/${blog._id}`} style={{ color: '#0fa0fa', textDecoration: 'none', fontSize: 30 }}>{blog.blog_title} 
-                                <span style={{ fontSize: 5, marginLeft: 10, color:'black' }}>{blog.create_time ? timestampToTime(blog.create_time, false) : ''}
+                                <span style={{ fontSize: 10, marginLeft: 10, color:'black' }}>{blog.create_time ? timestampToTime(blog.create_time, false) : ''}
                                 </span></Link>
                                </li>
                         })}

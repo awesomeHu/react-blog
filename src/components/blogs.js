@@ -195,7 +195,6 @@ const styles = {
         padding: 40,
         // marginTop: 50,
         marginBottom: 50,
-        border: '0.4px solid grey',
         width: 700,
         height: 'auto',
         borderRadius: 2,
