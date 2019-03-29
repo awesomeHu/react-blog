@@ -19,15 +19,16 @@ export default class AboutMe extends Component {
                         <h3>Hi, I’m Daniel. Nice to meet you.</h3>
                         <p style={{ marginTop: -20 }}>I am a self-taught developer who originally had a master's degree in chemical engineering.
                         I started with an interest in programming and reading several books about front end technologies, followed by finishing the tasks
-                        in the FreeCodeCamp community forum. I also bought many courses from Udemy and other resources to enhance my knowledge and skills. 
-                        All of these endeavors laid a solid foundation for my career.
+                        in the FreeCodeCamp community forum. I also bought many courses from Udemy and other resources to enhance my programming 
+                        knowledge and skills. 
+                        All of these hard work laid a solid foundation for my career.
                         The learning journey of a self-taught developer has been tough with
                         lots of obstacles and uncertainty especially for those like me that had zero programming experience.
                         Rome is not built in one day.
                         An important way to learn anything is to focus on and master each individual step. For fields like programming,
-                        I understand that it involves many small steps, therefore, it requires patience,
+                        I understand that it involves many small steps. Therefore, it requires patience,
                         dedication, persistence and problem-solving skills. I believe that I have those strengths and skills to be good at what I do.
-                        With my enthusiasm and enormous interest in this field,
+                        With my enormous enthusiasm and interest in this field,
                         I will keep learning from different resources and mastering new technologies.
                         As the knowledge and technologies are constantly changing in software development, the learning journey is ongoing.
                         </p> </div></div>
