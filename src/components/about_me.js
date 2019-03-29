@@ -30,7 +30,7 @@ export default class AboutMe extends Component {
                         dedication, persistence and problem-solving skills. I believe that I have those strengths and skills to be good at what I do.
                         With my enormous enthusiasm and interest in this field,
                         I will keep learning from different resources and mastering new technologies.
-                        As the knowledge and technologies are constantly changing in software development, the learning journey is ongoing.
+                        As the knowledge and technologies are constantly updating in software development, the learning journey is ongoing.
                         </p> </div></div>
             </div>
         )
