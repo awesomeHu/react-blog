@@ -36,7 +36,7 @@ export default class Blogs extends PureComponent {
                 display: 'flex',
                 flexDirection: 'row',
                 width: '100%',
-                padding:'50px 100px 100px 170px'
+                padding:'50px 100px 100px 120px'
             }}>
                 <div style={{
                     top: 50,

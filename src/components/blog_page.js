@@ -99,7 +99,7 @@ export default class BlogPage extends PureComponent {
                 display: 'flex',
                 flexDirection: 'row',
                 width: '100%',
-                padding: '50px 100px 20px 170px',
+                padding: '50px 100px 20px 100px',
             }}>
                 {this.props.blogDetail.isFetching ? <div style={styles.loading}>
                         <LoadingAnimation style={styles.noticeView} width={450} height={450}/>
@@ -132,7 +132,7 @@ export default class BlogPage extends PureComponent {
                         </div>
 
                     </div>
-                    <LongSeperatorLine style={{ margin: '10px auto' }} />
+                    <LongSeperatorLine style={{ margin: '10px auto', width: 800 }} />
                     {/* <div style={{ color: '#544031', lineHeight: 2 }}> */}
 
                     <div
@@ -145,12 +145,12 @@ export default class BlogPage extends PureComponent {
                     />
 
                     {/* </div> */}
-                    <LongSeperatorLine style={{ margin: '20px auto' }} />
+                    <LongSeperatorLine style={{ margin: '20px auto', width: 800  }} />
                     <CommentsContainer
                         blog_id={this.props.match.params.blog_id}
                         hideReplySection={this.hideReplySection}
                     />
-                    <LongSeperatorLine style={{ margin: '30px auto' }} />
+                    <LongSeperatorLine style={{ margin: '30px auto', width: 800  }} />
                     {this.state.show_reply_section ? <ReplySection
                         postComment={this.props.postComment}
                         blogId={this.props.match.params.blog_id}
@@ -493,7 +493,7 @@ const styles = {
         marginRight: 50,
         display: 'flex',
         flexDirection: 'column',
-        width: 750,
+        width: 800,
         height: 'auto',
         backgroundColor: 'white',
         padding: 40,
