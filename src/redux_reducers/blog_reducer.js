@@ -26,13 +26,14 @@ const blogListReducer = (state = initialstate, action) => {
                 isFetching: true
             }
         case BLOG_ACTIONS.GET_ALL_BLOGS_SUCCESS:
-            const { blogList, allBlogList, blogDetail } = action.payload
+            const { blogList, allBlogList, blogDetail, total } = action.payload
             return {
                 ...state,
                 isFetching: false,
                 blogList,
                 allBlogList,
                 blogDetail,
+                total
             };
         case BLOG_ACTIONS.GET_ALL_BLOGS_FAILURE:
             return {

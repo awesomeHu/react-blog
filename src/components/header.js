@@ -45,11 +45,11 @@ export default class Header extends Component {
     render() {
         return (<div>
             <div style={styles.headerStyle}>
-                <div style={styles.headerTitleStyle}><Link to='/' style={{color:'white', textDecoration: 'none'}} >W.H</Link></div>
+                <div style={styles.headerTitleStyle}><Link to='/' style={{ color: 'white', textDecoration: 'none' }} >W.H</Link></div>
                 <div style={styles.headerSmallTitleStyle}>
-                    <div style={{ cursor: 'pointer' }}><Link to='/' style={{color:'white', textDecoration: 'none'}} >Home</Link></div>
-                    <div style={{ margin: 30, cursor: 'pointer' }}><Link to='/archives' style={{color:'white', textDecoration: 'none'}} >Archives</Link></div>
-                    <div style={{ cursor: 'pointer' }}><Link to='/about_me' style={{color:'white', textDecoration: 'none'}} >About me</Link></div>
+                    <div style={{ cursor: 'pointer' }}><Link to='/' style={{ color: 'white', textDecoration: 'none' }} >Home</Link></div>
+                    <div style={{ margin: 30, cursor: 'pointer' }}><Link to='/archives' style={{ color: 'white', textDecoration: 'none' }} >Archives</Link></div>
+                    <div style={{ cursor: 'pointer' }}><Link to='/about_me' style={{ color: 'white', textDecoration: 'none' }} >About me</Link></div>
                     <div style={styles.login} onClick={() => { this.setState({ isLoginShow: true }) }}>{this.state.isLoggedin ? '' : 'LOGIN'}</div>
                     <div style={styles.signup} onClick={() => this.setState({ isSignupShow: true })}>{this.state.isLoggedin ? '' : 'SIGN UP'}</div>
                     <div style={{ cursor: 'pointer', fontWeight: 'bold', right: 80 }} onClick={() => this.setState({ isLogoutButtonShow: !this.state.isLogoutButtonShow })}>{this.state.isLoggedin ? <UserWithLogout name={this.state.user ? this.state.user.name : ''} /> : null}</div>
@@ -109,11 +109,13 @@ export class Logoutbutton extends PureComponent {
     }
     render() {
         return (
-            <div style={Object.assign({}, styles.logoutButtonStyle, { color: this.state.hover ? 'red' : '#004c99' }, this.props.style)}>
-                <p style={{ cursor: 'pointer' }}
-                    onClick={this._handleLogout}
-                    onMouseEnter={() => this.setState({ hover: true })}
-                    onMouseLeave={() => this.setState({ hover: false })}>Logout</p></div>
+            <div style={Object.assign({}, styles.logoutButtonStyle, { backgroundColor: this.state.hover ? 'red' : 'white' }, this.props.style)}
+                onClick={this._handleLogout}
+                onMouseEnter={() => this.setState({ hover: true })}
+                onMouseLeave={() => this.setState({ hover: false })}
+            >
+                <div>Logout</div>
+            </div>
         )
     }
 }
@@ -168,7 +170,9 @@ const styles = {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        borderRadius: 6
+        borderRadius: 6,
+        color: 'black',
+        cursor: 'pointer'
     }
 }
 

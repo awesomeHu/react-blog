@@ -6,84 +6,132 @@ import { timestampToTime } from '../helpers/helpers'
 import LoadingPage from './loading_page';
 import LoadingAnimation from './loading_animation';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { Pagination } from 'antd'
+import '../styles/pagination.css';
 import '../styles/blogs.css'
 
 export default class Blogs extends PureComponent {
     constructor(props) {
         super(props);
-        this.blog_list = ''
+        this.state = {
+            blog_list: [],
+            current_page_num: 1,
+            total: 0
+        }
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { allBlogs } = this.props
+        const { blogList } = allBlogs
+        if (this.props.location !== nextProps.location && nextProps.location.query && nextProps.location.query.category_id) {
+            this.setState({
+                blog_list: blogList[nextProps.location.query.category_id].slice(0, 5),
+                total: blogList[nextProps.location.query.category_id].length
+            })
+        }
+        else {
+            this.setState({
+                blog_list: Object.values(nextProps.allBlogs.blogDetail).slice(0, 5),
+                total: Object.values(nextProps.allBlogs.blogDetail).length
+            })
+        }
     }
 
     componentDidMount() {
         this.props.getAllBlogs()
         this.props.fetchAllCategories()
     }
+    handlePageNumChange = (pageNum) => {
+        this.setState({
+            current_page_num: pageNum
+        })
+    }
 
-
+    onChangeBlogList = (pageNum) => {
+        const { allBlogs, location } = this.props
+        const { blogList } = allBlogs
+        let start_index = pageNum > 1 ? (pageNum - 1) * 5 : 0
+        let end_index = pageNum > 1 ? pageNum * 5 : 5
+        this.setState({
+            blog_list: Object.values(location.query && location.query.category_id ? 
+                blogList[location.query.category_id] : allBlogs.blogDetail).slice(start_index, end_index)
+        })
+    }
+   
     render() {
         const {
             allBlogs,
             history,
             allCategories
         } = this.props
-        const { blogList } = allBlogs
+        const { blogList, total } = allBlogs
         const categories_name = {}
         allCategories && allCategories.list && allCategories.list.forEach(category => categories_name[category._id] = category.name)
-        this.blog_list = this.props.location.query && this.props.location.query.category_id ? blogList[this.props.location.query.category_id] : Object.values(allBlogs.blogDetail)
 
         return (
-            <div style={{
+            this.props.allBlogs.is_fetching ? <div style={styles.loading}>
+                <LoadingAnimation style={styles.noticeView} width={550} height={550} />
+            </div> : <div style={{
                 display: 'flex',
                 flexDirection: 'row',
                 width: '100%',
-                padding:'50px 100px 100px 120px'
+                height: 'auto',
+                padding: '50px 100px 100px 120px'
             }}>
-                <div style={{
-                    top: 50,
-                    left: 170,
-                    marginRight:100,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    width: 780,
-                    height: 'auto'
-                }}>
+                    <div style={{
+                        top: 50,
+                        left: 170,
+                        marginRight: 100,
+                        display: 'flex',
+                        flexDirection: 'column',
+                        width: 780,
+                        height: 'auto'
+                    }}>
 
-                    {this.props.allBlogs.is_fetching ? <div style={styles.loading}>
-                        <LoadingAnimation style={styles.noticeView} width={450} height={450}/>
-                    </div> : this.blog_list && this.blog_list.map((blog, index) => {
-                        const { category,
-                            blog_title,
-                            blog_content,
-                            author,
-                            create_time,
-                            blog_comments,
-                            _id,
-                        } = blog;
-                        return (<SingleBlog
-                            category={categories_name[category[0]]}
-                            blog_title={blog_title}
-                            num_of_likes={blog.meta.likes}
-                            views={blog.meta.views}
-                            blog_content={blog_content}
-                            author={author}
-                            create_time={create_time}
-                            blog_comments={blog_comments}
-                            blog_id={_id}
-                            blog={blog}
-                            history={history}
-                            key={index}
-                        />)
-                    })}
-                   
+                        {this.state.blog_list && this.state.blog_list.map((blog, index) => {
+                            const { category,
+                                blog_title,
+                                blog_content,
+                                author,
+                                create_time,
+                                blog_comments,
+                                _id,
+                            } = blog;
+                            return (<SingleBlog
+                                category={categories_name[category[0]]}
+                                blog_title={blog_title}
+                                num_of_likes={blog.meta.likes}
+                                views={blog.meta.views}
+                                blog_content={blog_content}
+                                author={author}
+                                create_time={create_time}
+                                blog_comments={blog_comments}
+                                blog_id={_id}
+                                blog={blog}
+                                history={history}
+                                key={index}
+                            />)
+                        })}
+                        {this.state.blog_list.length > 0 && <div style={{ textAlign: 'center', marginTop: 20 }}>
+                            <Pagination
+                                defaultPageSize={5}
+                                onChange={(pageNum) => {
+                                    this.onChangeBlogList(pageNum);
+                                    this.handlePageNumChange(pageNum)
+                                }}
+                                current={this.state.current_page_num}
+                                total={this.state.total ? this.state.total : total}
+                            />
+                        </div>}
+                    </div>
+                    <div style={{
+                        top: 50,
+                        padding: '10px 15px 70px 15px',
+                        width: 300,
+                        height: 600,
+                        backgroundColor: 'white',
+                    }}><RightSideBar history={this.props.history} /></div>
                 </div>
-                <div style={{
-                    top: 50,
-                    padding: '10px 15px 70px 15px',
-                    width: 300,
-                    height: 600,
-                    backgroundColor: 'white',
-                }}><RightSideBar history={this.props.history} /></div>
-            </div>
         )
     }
 }
@@ -121,68 +169,68 @@ export class SingleBlog extends PureComponent {
             create_time,
             views
         } = this.props
-        return ( <ReactCSSTransitionGroup
+        return (<ReactCSSTransitionGroup
             key={this.props.blog_id}
             transitionName="example"
             transitionAppear={true}
             transitionAppearTimeout={1000}
             transitionEnterTimeout={1000}
             transitionLeaveTimeout={1000}
-          >
-        <div style={styles.blogStyle}>
-            <div style={{
-                color: '#00bcd4',
-                marginBottom: 8,
-                fontSize: 12
-            }}>{category}</div>
-            <div style={Object.assign({}, styles.blogTitleStyle, { color: this.state.hovered && this.hoverElements.title ? '#DC143C' : 'black' })}
-                onMouseEnter={() => { this.setState({ hovered: true }); this.hoverElements.title = true }}
-                onMouseLeave={() => { this.setState({ hovered: false }); this.hoverElements.title = false }}
-                onClick={this.handleClickReadMore}
-            >
-                {blog_title} </div>
-
-            <div style={styles.blogInfoStyle}>
+        >
+            <div style={styles.blogStyle}>
                 <div style={{
-                    display: 'flex',
-                    flexDirection: 'row',
+                    color: '#00bcd4',
+                    marginBottom: 8,
+                    fontSize: 12
+                }}>{category}</div>
+                <div style={Object.assign({}, styles.blogTitleStyle, { color: this.state.hovered && this.hoverElements.title ? '#DC143C' : 'black' })}
+                    onMouseEnter={() => { this.setState({ hovered: true }); this.hoverElements.title = true }}
+                    onMouseLeave={() => { this.setState({ hovered: false }); this.hoverElements.title = false }}
+                    onClick={this.handleClickReadMore}
+                >
+                    {blog_title} </div>
 
-                }}><Icon icon='date' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{create_time ? timestampToTime(create_time, false) : ''}</div>
+                <div style={styles.blogInfoStyle}>
+                    <div style={{
+                        display: 'flex',
+                        flexDirection: 'row',
+
+                    }}><Icon icon='date' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{create_time ? timestampToTime(create_time, false) : ''}</div>
+                    </div>
+
+                    <div style={styles.icon_style}><Icon icon='user' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{author}</div>
+                    </div>
+                    <div style={Object.assign({}, styles.icon_style, { color: 'black' })}
+                        onMouseEnter={() => { this.setState({ hovered: true }); this.hoverElements.comment = true }}
+                        onMouseLeave={() => { this.setState({ hovered: false }); this.hoverElements.comment = false }}>
+                        <Icon icon='comment' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{blog_comments ? blog_comments.length : 'Leave a comment'}</div>
+                    </div>
+
+                    <div style={styles.icon_style}><Icon icon='like' /><div style={{ marginLeft: 7, marginTop: 5, alignSelf: 'center' }}>{num_of_likes ? num_of_likes : 0}</div>
+                    </div>
+                    <div style={Object.assign({}, styles.icon_style, { marginTop: 3 })}><Icon icon='views' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{views ? views : 0}</div>
+                    </div>
                 </div>
 
-                <div style={styles.icon_style}><Icon icon='user' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{author}</div>
-                </div>
-                <div style={Object.assign({}, styles.icon_style, { color: 'black' })}
-                    onMouseEnter={() => { this.setState({ hovered: true }); this.hoverElements.comment = true }}
-                    onMouseLeave={() => { this.setState({ hovered: false }); this.hoverElements.comment = false }}>
-                    <Icon icon='comment' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{blog_comments ? blog_comments.length : 'Leave a comment'}</div>
+                <div style={{
+                    lineHeight: 1.6,
+                    fontSize: 15,
+                    color: '#544031',
+                    width: 700,
+                    overflow: 'hidden'
+                }}>
+                    {blog_content.split(' ').slice(0, 40).join(' ')}
                 </div>
 
-                <div style={styles.icon_style}><Icon icon='like' /><div style={{ marginLeft: 7, marginTop:5, alignSelf: 'center' }}>{num_of_likes ? num_of_likes : 0}</div>
+                <div style={Object.assign({}, styles.buttonStyle, { backgroundColor: this.state.hovered && this.hoverElements.button ? '#808080' : '#DC143C' })}
+                    onClick={this.handleClickReadMore}
+                    onMouseEnter={() => { this.setState({ hovered: true }); this.hoverElements.button = true }}
+                    onMouseLeave={() => { this.setState({ hovered: false }); this.hoverElements.button = false }}
+                ><p>READ MORE</p>
                 </div>
-                <div style={Object.assign({}, styles.icon_style,{ marginTop:3} )}><Icon icon='views' /><div style={{ marginLeft: 7, alignSelf: 'center' }}>{views ? views : 0}</div>
-                </div>
+
+
             </div>
-
-            <div style={{
-                lineHeight: 1.6,
-                fontSize: 15,
-                color: '#544031',
-                width:700,
-                overflow:'hidden'
-            }}>
-                {blog_content.split(' ').slice(0, 40).join(' ')}
-            </div>
-
-            <div style={Object.assign({}, styles.buttonStyle, { backgroundColor: this.state.hovered && this.hoverElements.button ? '#808080' : '#DC143C' })}
-                onClick={this.handleClickReadMore}
-                onMouseEnter={() => { this.setState({ hovered: true }); this.hoverElements.button = true }}
-                onMouseLeave={() => { this.setState({ hovered: false }); this.hoverElements.button = false }}
-            ><p>READ MORE</p>
-            </div>
-
-
-        </div>
         </ReactCSSTransitionGroup>
         )
 
@@ -244,6 +292,7 @@ const styles = {
         display: 'flex',
         alignSelf: 'stretch',
         flex: 1,
+        minHeight: 800,
         justifyContent: 'center',
         alignItems: 'center',
     },

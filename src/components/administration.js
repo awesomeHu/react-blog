@@ -10,10 +10,12 @@ import highlight from 'highlight.js'
 import { notice } from './popup';
 import { Logoutbutton } from './header';
 import { timestampToTime } from '../helpers/helpers'
+import { Pagination } from 'antd'
+import '../styles/pagination.css';
 
 
 export class AdminPage extends PureComponent {
-  
+
     render() {
         const { history } = this.props
         return (
@@ -26,13 +28,47 @@ export class AdminPage extends PureComponent {
 }
 
 export class BlogManagement extends PureComponent {
+    constructor(props) {
+        super(props);
+        this.state = {
+            blog_list: [],
+            current_page_num: 1
+        }
+    }
 
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.allBlogs.blogDetail) {
+            this.setState({
+                blog_list: Object.values(nextProps.allBlogs.blogDetail).slice(0, 8),
+            })
+        }
+    }
     componentDidMount() {
         this.props.getAllBlogs()
         this.props.fetchAllCategories()
     }
+
+    handlePageNumChange = (pageNum) => {
+        this.setState({
+            current_page_num: pageNum
+        })
+    }
+
+    onChangeBlogList = (pageNum) => {
+        let start_index = pageNum > 1 ? (pageNum - 1) * 8 : 0
+        let end_index = pageNum > 1 ? pageNum * 8 : 8
+        this.setState({
+            blog_list: Object.values(this.props.allBlogs.blogDetail).slice(start_index, end_index)
+        })
+    }
     render() {
-        return (<AdminPage history={this.props.history}>
+        const {
+            allBlogs,
+            deleteBlog,
+            history
+        } = this.props
+        const { total } = allBlogs
+        return (<AdminPage history={history}>
             <div style={{
                 width: 3000,
                 backgroundColor: 'white',
@@ -41,7 +77,22 @@ export class BlogManagement extends PureComponent {
                 overflow: 'auto'
             }}>
                 <h1 style={{ alignSelf: 'center' }}>Blog Management</h1>
-                <div><BlogsListView {...this.props} /></div>
+                <div><BlogsListView
+                    blog_list={this.state.blog_list}
+                    deleteBlog={deleteBlog}
+                    history={history}
+                /></div>
+                {this.state.blog_list.length > 0 && <div style={{ textAlign: 'center', marginTop: 100 }}>
+                    <Pagination
+                        defaultPageSize={8}
+                        onChange={(pageNum) => {
+                            this.onChangeBlogList(pageNum);
+                            this.handlePageNumChange(pageNum)
+                        }}
+                        current={this.state.current_page_num}
+                        total={total}
+                    />
+                </div>}
             </div>
         </AdminPage>)
     }
@@ -50,10 +101,9 @@ export class BlogManagement extends PureComponent {
 class BlogsListView extends PureComponent {
 
     render() {
-        const blog_list = this.props.allBlogs.blogDetail && Object.values(this.props.allBlogs.blogDetail)
         return (
             <div>
-                {blog_list && blog_list.map((blog, index) => <BlogItem
+                {this.props.blog_list && this.props.blog_list.map((blog, index) => <BlogItem
                     blogTitle={blog.blog_title}
                     blogContent={blog.blog_content}
                     category={blog.category[0]}

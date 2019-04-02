@@ -16,8 +16,9 @@ export function* getAllBlogsFlow() {
         yield take(ACTIONS.GET_ALL_BLOGS_REQUEST)
         const res = yield call(getAllBlogs)
         if (res && res.data && res.data.code === 0) {
+            const total = res.data.data.total
             const { blogList, allBlogList, blogDetail } = handleBlogList(res)
-            yield put({ type: ACTIONS.GET_ALL_BLOGS_SUCCESS, payload: { blogList, allBlogList, blogDetail } })
+            yield put({ type: ACTIONS.GET_ALL_BLOGS_SUCCESS, payload: { blogList, allBlogList, blogDetail, total } })
         }
     }
 }
