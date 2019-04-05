@@ -502,7 +502,7 @@ const styles = {
     },
     sub_blog_info: {
         marginTop: 5,
-        marginBottom: 30,
+        marginBottom: 10,
         display: 'flex',
         flexDirection: 'row',
         justifyContent: 'flex-start',
@@ -515,6 +515,8 @@ const styles = {
         fontWeight: 'bold',
         fontFamily: 'Times New Roman',
         alignSelf: 'flex-start',
+        margin:'22px 0 22px 0',
+        lineHeight:1.2
 
     },
     icon_style: {
