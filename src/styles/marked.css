@@ -55,9 +55,10 @@ pre {
   }
   
   #content {
-    font-family: 'Microsoft YaHei', 'sans-serif';
-    font-size: 18px;
+    font-family: 'times';
+    font-size: 21px;
     line-height: 25px;
+    letter-spacing: 0.3px
   }
   
   #content .desc ul,

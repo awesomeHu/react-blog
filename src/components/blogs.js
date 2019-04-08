@@ -219,7 +219,7 @@ export class SingleBlog extends PureComponent {
                     width: 700,
                     overflow: 'hidden'
                 }}>
-                    {blog_content.split(' ').slice(0, 40).join(' ')}
+                    {blog_content.split(' ').slice(0, 40).join(' ') + '...'}
                 </div>
 
                 <div style={Object.assign({}, styles.buttonStyle, { backgroundColor: this.state.hovered && this.hoverElements.button ? '#808080' : '#DC143C' })}
