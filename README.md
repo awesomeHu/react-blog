@@ -8,10 +8,10 @@ This project is based on react + redux + redux-saga.
 The front page of the blog includes login, sign up, blog detail, click to like blog and comment a blog, etc.
 
 * Front page:
-![Front1 Apr-08-2019 14-30-35](https://user-images.githubusercontent.com/38165102/55749588-4b8c3580-5a0f-11e9-8d0a-377fb6fb0d9e.gif)
+![Front1 Apr-08-2019 17-10-20](https://user-images.githubusercontent.com/38165102/55757157-4fc14e80-5a21-11e9-8eca-4e884c3ad9e8.gif)
 
 * Blog detail:
-![Front2 Apr-08-2019 15-05-38](https://user-images.githubusercontent.com/38165102/55751636-20581500-5a14-11e9-8a16-ae00c754b302.gif)
+![Front2 Apr-08-2019 17-09-22](https://user-images.githubusercontent.com/38165102/55757178-5cde3d80-5a21-11e9-9b92-8445d5c197bf.gif)
 
 * Admin page:
 ![Front3 Apr-08-2019 16-15-58](https://user-images.githubusercontent.com/38165102/55754003-afb3f700-5a19-11e9-9c0c-ea9901b309d1.gif)
