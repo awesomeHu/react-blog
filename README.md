@@ -46,15 +46,15 @@ Front page:
 - [ ] Mobile display
 
 ### Tech stack
-⋅⋅* 'antd': '^3.15.2',
-⋅⋅* axios: ^0.18.0,
-⋅⋅* highlight.js: ^9.14.2,
-⋅⋅* marked: ^0.6.1,
-⋅⋅* react: ^16.7.0,
-⋅⋅* redux: ^4.0.1,
-⋅⋅* redux-saga: ^1.0.1,
-⋅⋅* sass: ^1.17.0,
-⋅⋅* simplemde: ^1.11.2
+* antd: '^3.15.2',
+* axios: ^0.18.0,
+* highlight.js: ^9.14.2,
+* marked: ^0.6.1,
+* react: ^16.7.0,
+* redux: ^4.0.1,
+* redux-saga: ^1.0.1,
+* sass: ^1.17.0,
+* simplemde: ^1.11.2
 
 
 
