@@ -46,7 +46,7 @@ Front page:
 - [ ] Mobile display
 
 ### Tech stack
-⋅⋅* antd: ^3.15.2,
+⋅⋅* 'antd': '^3.15.2',
 ⋅⋅* axios: ^0.18.0,
 ⋅⋅* highlight.js: ^9.14.2,
 ⋅⋅* marked: ^0.6.1,
