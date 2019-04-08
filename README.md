@@ -19,6 +19,10 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 * Admin page update blog
 ![Front4 Apr-08-2019 16-19-51](https://user-images.githubusercontent.com/38165102/55754281-48e30d80-5a1a-11e9-8c30-063274e32183.gif)
 
+* Admin page add and delete blog
+![Front5  Apr-08-2019 18-37-10](https://user-images.githubusercontent.com/38165102/55761490-6d94b080-5a2d-11e9-9d4e-e5c1da9068d7.gif)
+
+
 ## What I have done
 
 ### Front page 
