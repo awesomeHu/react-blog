@@ -36,9 +36,9 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 - [x] Archives
 
 ### Admin page
-- [x] Publish, Delete, Update blog(MarkDown editor)
-- [x] Create, Delete category
-- [x] User list
+- [x] Publish, delete, update blog(MarkDown editor)
+- [x] Create, delete category
+- [x] Get user list
 
 ### Back end
 - [x] Handle database
@@ -51,7 +51,6 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 - [ ] Add animations when make a comment
 - [ ] Add github third party login
 - [ ] Make app more responsive
-- [ ] Mobile display
 
 ## Tech stack
 * antd: '^3.15.2',
