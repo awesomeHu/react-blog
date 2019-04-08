@@ -61,8 +61,8 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 * simplemde: ^1.11.2
 
 Project Link:
-Front page: [www.wh-land.com]
-Admin page: [www.wh-land.com/admin]
+*Front page: www.wh-land.com
+*Admin page: www.wh-land.com/admin
 
 
 
