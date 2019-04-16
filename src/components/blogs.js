@@ -29,7 +29,7 @@ export default class Blogs extends PureComponent {
                 total: blogList[nextProps.location.query.category_id].length
             })
         }
-        else {
+        else if(nextProps.allBlogs.blogDetail){
             this.setState({
                 blog_list: Object.values(nextProps.allBlogs.blogDetail).slice(0, 5),
                 total: Object.values(nextProps.allBlogs.blogDetail).length
