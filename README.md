@@ -1,7 +1,7 @@
 
-## Personal blog
+# Personal blog
 
-This project is based on react + redux + redux-saga.
+This project is created with react + redux + redux-saga.
 
 ## Description
 
@@ -19,9 +19,13 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 * Admin page update blog
 ![Front4 Apr-08-2019 16-19-51](https://user-images.githubusercontent.com/38165102/55754281-48e30d80-5a1a-11e9-8c30-063274e32183.gif)
 
-### What I have done
+* Admin page add and delete blog
+![Front5  Apr-08-2019 18-37-10](https://user-images.githubusercontent.com/38165102/55761490-6d94b080-5a2d-11e9-9d4e-e5c1da9068d7.gif)
 
-#### Front page 
+
+## What I have done
+
+### Front page 
 - [x] Login
 - [x] Signup
 - [x] Blog list
@@ -31,25 +35,24 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 - [x] like and comment
 - [x] Archives
 
-#### Admin page
-- [x] Publish, Delete, Update blog(MarkDown editor)
-- [x] Create, Delete category
-- [x] User list
+### Admin page
+- [x] Publish, delete, update blog(MarkDown editor)
+- [x] Create, delete category
+- [x] Get user list
 
-#### Back end
+### Back end
 - [x] Handle database
 - [x] Routes management
 - [x] Authentication
 - [x] Get, delete, put, post
 - [x] ...
 
-### To do
+## To do
 - [ ] Add animations when make a comment
 - [ ] Add github third party login
 - [ ] Make app more responsive
-- [ ] Mobile display
 
-### Tech stack
+## Tech stack
 * antd: '^3.15.2',
 * axios: ^0.18.0,
 * highlight.js: ^9.14.2,
@@ -60,8 +63,10 @@ The front page of the blog includes login, sign up, blog detail, click to like b
 * sass: ^1.17.0,
 * simplemde: ^1.11.2
 
+## Project Link:
+* Front page: www.wh-land.com
 
-
+* Admin page: www.wh-land.com/admin
 
 
 
